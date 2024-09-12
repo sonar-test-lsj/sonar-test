@@ -8,7 +8,12 @@ class QQQTest {
 
     @Test
     void getZ() {
-        QQQ qqq = new QQQ(1);
+        QQQ qqq = new QQQ(1,1,1,1);
         assertEquals(1, qqq.getZ());
+        assertEquals(1, qqq.getF());
+        assertEquals(1, qqq.getG());
+        assertEquals(1, qqq.getQ());
     }
+
+
 }
