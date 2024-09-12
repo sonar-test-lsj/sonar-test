@@ -2,6 +2,7 @@ name: Continuous Integration
 
 on:
   pull_request:
+  push:
 jobs:
   testing:
     runs-on: ubuntu-20.04
