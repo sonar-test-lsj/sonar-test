@@ -2,6 +2,16 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.3'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'jacoco'
+	id "org.sonarqube" version "4.4.1.3373"
+}
+
+sonar {
+	properties {
+		property "sonar.projectKey", "sonar-test-lsj_sonar-test"
+		property "sonar.organization", "sonar-test-lsj"
+		property "sonar.host.url", "https://sonarcloud.io"
+	}
 }
 
 group = 'com.example'
@@ -34,4 +44,14 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
+
+jacocoTestReport {
+	dependsOn test  // 테스트가 실행된 후에 리포트 생성
+	reports {
+		xml.required = true
+		html.required = false
+	}
+}
+
