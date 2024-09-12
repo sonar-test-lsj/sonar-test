@@ -3,7 +3,7 @@ plugins {
 	id 'org.springframework.boot' version '3.3.3'
 	id 'io.spring.dependency-management' version '1.1.6'
 	id 'jacoco'
-	id "org.sonarqube" version "4.4.1.3373"
+	id "org.sonarqube" version "3.5.0.2730"
 }
 
 sonar {
@@ -11,6 +11,7 @@ sonar {
 		property "sonar.projectKey", "sonar-test-lsj_sonar-test"
 		property "sonar.organization", "sonar-test-lsj"
 		property "sonar.host.url", "https://sonarcloud.io"
+		property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
 	}
 }
 
@@ -47,11 +48,16 @@ tasks.named('test') {
 	finalizedBy jacocoTestReport
 }
 
+tasks.named('sonar').configure {
+	dependsOn jacocoTestReport
+}
+
 jacocoTestReport {
 	dependsOn test  // 테스트가 실행된 후에 리포트 생성
 	reports {
 		xml.required = true
-		html.required = false
+		xml.outputLocation = layout.buildDirectory.file("reports/jacoco/test/jacocoTestReport.xml")
+		html.required = true
 	}
 }
 
