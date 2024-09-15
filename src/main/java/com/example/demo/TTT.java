@@ -17,4 +17,8 @@ public class TTT {
     }
 
 
+    public int Go2() {
+        return 1000;
+    }
+
 }
