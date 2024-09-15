@@ -12,7 +12,7 @@ class QQQTest {
         assertEquals(1, qqq.getZ());
         assertEquals(1, qqq.getF());
         assertEquals(1, qqq.getG());
-        assertEquals(1, qqq.getQ());
+        assertEquals(100, qqq.getQ());
     }
 
 

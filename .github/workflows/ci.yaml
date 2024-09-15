@@ -1,8 +1,10 @@
 name: Continuous Integration
 
 on:
-  pull_request:
   push:
+    branches: [main]
+  pull_request:
+
 jobs:
   testing:
     runs-on: ubuntu-20.04
@@ -12,7 +14,7 @@ jobs:
       - name: Checkout PR
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.base.ref }}
 
       # 2. 자바 환경 설정
       - name: Set up JDK 17
