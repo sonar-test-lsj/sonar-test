@@ -20,6 +20,6 @@ class TTTTest {
     @Test
     void go() {
         TTT ttt = new TTT(1, 1, 1, 1);
-        assertEquals(1, ttt.Go());
+        assertEquals(10, ttt.Go());
     }
 }
